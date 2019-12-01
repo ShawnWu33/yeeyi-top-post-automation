@@ -31,6 +31,8 @@ const { username, password, links } = require("./account");
       console.log("All task are distributed")
       await Promise.all(promiseArray);
       browser.close();
+    } else {
+        console.error('Account incorrect')
     }
   });
   await loginPage.click("#postBtn");
