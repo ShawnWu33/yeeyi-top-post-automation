@@ -2,7 +2,9 @@ const puppeteer = require("puppeteer");
 const { username, password, links } = require("./account");
 const cron = require('node-cron')
 
-cron.schedule('0 0,1,10,11,12,13,14,15,16,17,18,19,20,21,22,23 * * *', async () => { //Fire every hour starting from 10AM to 1 AM at next day
+
+
+const elevate = async () => {
   console.log('Fire at', Date());
   const browser = await puppeteer.launch();
   const loginPage = await browser.newPage();
@@ -38,4 +40,5 @@ cron.schedule('0 0,1,10,11,12,13,14,15,16,17,18,19,20,21,22,23 * * *', async () 
     }
   });
   await loginPage.click("#postBtn");
-});
+}
+cron.schedule('0 0,1,10,11,12,13,14,15,16,17,18,19,20,21,22,23 * * *', elevate);
